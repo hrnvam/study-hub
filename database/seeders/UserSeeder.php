@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Role;
 use App\Models\Profile;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,9 +19,9 @@ class UserTableSeeder extends Seeder
         $student = Role::where('name', 'student')->first();
 
         $a = new User;
-        $a->name = "Leo";
-        $a->email = "leo@example.com";
-        $a->password = bcrypt("password");
+        $a->name = 'Leo';
+        $a->email = 'leo@example.com';
+        $a->password = bcrypt('password');
         $a->role_id = $admin->id;
         $a->save();
         Profile::factory()->for($a)->create();
@@ -35,5 +34,5 @@ class UserTableSeeder extends Seeder
 
         User::factory()->count(4)->has(Profile::factory(), 'profile')->create(['role_id' => $tutor->id]);
         User::factory()->count(10)->has(Profile::factory(), 'profile')->create(['role_id' => $student->id]);
-}
+    }
 }

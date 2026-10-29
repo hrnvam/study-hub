@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
 use App\Models\Post;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 /**
  * @extends Factory<Comment>
  */
@@ -19,7 +20,7 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'content' => fake()->paragraph(),
+            'content' => fake()->realText(fake()->numberBetween(60, 250)),
             'user_id' => User::factory(),
             'post_id' => Post::factory(),
         ];

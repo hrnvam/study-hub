@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Profile;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Profile>
@@ -20,7 +20,7 @@ class ProfileFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'bio' => fake()->sentence(12),
+            'bio' => fake()->realText(150),
             'avatar' => null,
         ];
     }

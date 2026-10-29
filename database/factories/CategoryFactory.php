@@ -18,10 +18,13 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->unique()->words(2, true);
+        $name = fake()->unique()->randomElement([
+            'Grammar', 'Vocabulary', 'Speaking', 'Writing', 'Listening',
+            'Reading', 'Exam Prep', 'Business English',
+        ]);
 
         return [
-            'name' => ucfirst($name),
+            'name' => $name,
             'slug' => Str::slug($name),
         ];
     }
